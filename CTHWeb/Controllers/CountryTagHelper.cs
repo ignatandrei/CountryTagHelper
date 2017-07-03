@@ -10,16 +10,26 @@ namespace CTHWeb.Controllers
     /// <summary>
     /// TODO: from IP
     /// TODO: localized
-    /// TODO: first item empty
+    /// add select2 with image flags
+    /// NuGet package
+    /// readme.md / wiki on github
+    /// tests
     /// </summary>
     [HtmlTargetElement("select", Attributes = ASPCountryAttributeName)]
     public class CountryTagHelper:TagHelper
     {
+        public CountryTagHelper()
+        {
+            ASPCountryEmpty = true;
+        }
         private const string ASPCountryAttributeName = "asp-country";
         private const string ASPCountrySelectedAttributeName = "asp-country-selected";
-
+        private const string ASPCountryEmptyAttributeName = "asp-country-empty";
         [HtmlAttributeName(ASPCountryAttributeName)]
         public bool ASPCountry { get; set; }
+
+        [HtmlAttributeName(ASPCountryEmptyAttributeName)]
+        public bool ASPCountryEmpty { get; set; }
 
         [HtmlAttributeName(ASPCountrySelectedAttributeName)]
         public string ASPCountrySelected{ get; set; }
@@ -44,6 +54,11 @@ namespace CTHWeb.Controllers
             {
                 bool existSelected = !string.IsNullOrWhiteSpace(ASPCountrySelected);
                 string option = "<option value='{0}' {2}>{1}</option>";
+                if (ASPCountryEmpty)
+                {
+                    string empty = "<option selected style='display: none' value=''></option>";
+                    output.Content.AppendHtml(empty);
+                }
                 foreach (var item in CountryISO)
                 {
                     string selected = "";
