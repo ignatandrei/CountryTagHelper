@@ -16,6 +16,7 @@ namespace CTHWeb.Controllers
     /// TODO: localized
     /// add select2 with image flags
     /// NuGet package
+    /// app hb deploy
     /// TODO: provider / dependency injection for FromIP 
     /// readme.md / wiki on github
     /// tests
