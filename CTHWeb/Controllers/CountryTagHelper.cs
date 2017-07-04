@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Primitives;
 using System;
 using System.IO;
 using System.Linq;
@@ -85,6 +86,20 @@ namespace CTHWeb.Controllers
 
 
         }
+        string GetUserIP(ViewContext vc)
+        {
+            StringValues headerFwd;
+            if ((ViewContext.HttpContext?.Request?.Headers?.TryGetValue("X-Forwarded-For", out headerFwd) ?? false){
+                string rawValues = headerFwd.ToString();  
+                if (!string.IsNullOrWhiteSpace(rawValues))
+                {
+                    return rawValues.Split(',')[0];
+                }
+
+            }
+            return ViewContext.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+
+        }
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             
@@ -99,9 +114,11 @@ namespace CTHWeb.Controllers
                 }
                 if(ASPCountryFromIP && !existSelected)
                 {
-                    var ip=ViewContext.HttpContext.Connection.RemoteIpAddress.ToString();
+                    string ip;
+                    
                     try
                     {
+                        ip = GetUserIP(ViewContext);
                         ASPCountrySelected = await GetCountryCodeFromIP(ip);
                         existSelected = true;
                     }
