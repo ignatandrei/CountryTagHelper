@@ -89,8 +89,9 @@ namespace CTHWeb.Controllers
         string GetUserIP(ViewContext vc)
         {
             StringValues headerFwd;
-            if ((ViewContext.HttpContext?.Request?.Headers?.TryGetValue("X-Forwarded-For", out headerFwd) ?? false){
-                string rawValues = headerFwd.ToString();  
+            if (ViewContext.HttpContext?.Request?.Headers?.TryGetValue("X-Forwarded-For", out headerFwd) ?? false)
+            {
+                string rawValues = headerFwd.ToString();
                 if (!string.IsNullOrWhiteSpace(rawValues))
                 {
                     return rawValues.Split(',')[0];
