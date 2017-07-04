@@ -17,9 +17,10 @@ namespace CTHWeb.Controllers
     /// TODO: localized
     /// add select2 with image flags
     /// NuGet package
-    /// app hb deploy
+    /// 
     /// TODO: provider / dependency injection for FromIP 
     /// readme.md / wiki on github
+    /// documentation on http://countrytaghelper.apphb.com/
     /// tests
     /// </summary>
     [HtmlTargetElement("select", Attributes = ASPCountryAttributeName)]
@@ -89,7 +90,7 @@ namespace CTHWeb.Controllers
         string GetUserIP(ViewContext vc)
         {
             StringValues headerFwd;
-            if (ViewContext.HttpContext?.Request?.Headers?.TryGetValue("X-Forwarded-For", out headerFwd) ?? false)
+            if (vc?.HttpContext?.Request?.Headers?.TryGetValue("X-Forwarded-For", out headerFwd) ?? false)
             {
                 string rawValues = headerFwd.ToString();
                 if (!string.IsNullOrWhiteSpace(rawValues))
@@ -98,7 +99,7 @@ namespace CTHWeb.Controllers
                 }
 
             }
-            return ViewContext.HttpContext?.Connection?.RemoteIpAddress?.ToString();
+            return vc?.HttpContext?.Connection?.RemoteIpAddress?.ToString();
 
         }
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
