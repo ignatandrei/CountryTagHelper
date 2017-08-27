@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using CTHWeb.Controllers;
+using CTH;
 
 namespace CTHWeb
 {
@@ -12,7 +13,8 @@ namespace CTHWeb
     {
         public static void Main(string[] args)
         {
-            CountryTagHelper c = new CountryTagHelper();
+
+            var c = new CountryTH();
 
             var host = new WebHostBuilder()
                 .UseKestrel()

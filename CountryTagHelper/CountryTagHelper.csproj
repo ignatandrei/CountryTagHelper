@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Add country helper . Demo at http://countrytaghelper.apphb.com/ . Source code at https://github.com/ignatandrei/CountryTagHelper 
+
+Usage: 
+In the ViewImports, put @addTagHelper *, CountryTagHelper
+
+In the view:
+<select asp-country="true" asp-country-empty="true"></select>
+
+<select asp-country="true" asp-country-selected="US" asp-country-empty="true"></select>
+
+<select asp-country="true" asp-country-fromIP="true"></select>
+</Description>
+    <PackageProjectUrl>http://countrytaghelper.apphb.com/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ignatandrei/CountryTagHelper</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="microsoft.aspnetcore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ResCTH.Designer.cs">
+      <DependentUpon>ResCTH.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ResCTH.resx">
+      <LastGenOutput>ResCTH.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

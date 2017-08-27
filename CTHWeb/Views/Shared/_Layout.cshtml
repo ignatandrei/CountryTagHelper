@@ -33,8 +33,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
                 </ul>
             </div>
         </div>
@@ -43,7 +43,17 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - CTHWeb</p>
+            <footer>
+                <small>
+                    Made by Andrei Ignat, <a href="http://msprogrammer.serviciipeweb.ro/" target="_blank">http://msprogrammer.serviciipeweb.ro</a>
+                    <br />
+                    Source code at <a href="https://github.com/ignatandrei/CountryTagHelper" target="_blank">https://github.com/ignatandrei/CountryTagHelper</a>
+                    <br />
+                    View online at <a href="http://countrytaghelper.apphb.com/" target="_blank">http://countrytaghelper.apphb.com/</a>
+                    <br />
+                    NuGet package at <a href=" https://nuget.org/packages/CountryTagHelper" target="_blank"> https://nuget.org/packages/CountryTagHelper</a>
+                </small>
+            </footer>
         </footer>
     </div>
 

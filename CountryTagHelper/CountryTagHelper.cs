@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using CountryTagHelper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Localization;
@@ -11,7 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CTHWeb.Controllers
+namespace CTH
 {
     /// <summary>
     /// TODO: localized
@@ -24,13 +25,13 @@ namespace CTHWeb.Controllers
     /// tests
     /// </summary>
     [HtmlTargetElement("select", Attributes = ASPCountryAttributeName)]
-    public class CountryTagHelper:TagHelper
+    public class CountryTH:TagHelper
     {
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
 
-        public CountryTagHelper()
+        public CountryTH()
         {
             
             ASPCountryEmpty = true;
@@ -53,7 +54,7 @@ namespace CTHWeb.Controllers
 
         static string[] CountryISO;
         //static PropertyInfo[] properties;
-        static CountryTagHelper()
+        static CountryTH()
         {
             var t =typeof( ResCTH);
             var properties= t.GetProperties(
