@@ -17,17 +17,18 @@ Usage:
 In the ViewImports, put @addTagHelper *, CountryTagHelper 
 
 In the view: 
-<select asp-country="true" asp-country-empty="true"></select>
+
+&lt;select asp-country=&#x27;true&#x27; asp-country-empty=&#x27;true&#x27; &gt;&lt;/select&gt;
 
 or
 
 
-<select asp-country="true" asp-country-selected="US" asp-country-empty="true"></select>
+&lt;select asp-country=&#x27;true&#x27; asp-country-selected=&#x27;US&#x27; asp-country-empty=&#x27;true&#x27;&gt;&lt;/select&gt;
 
 or
 
 
-<select asp-country="true" asp-country-fromIP="true"></select>
+&lt;select asp-country=&#x27;true&#x27; asp-country-fromIP=&#x27;true&#x27;&gt;&lt;/select&gt;
 
 # Support this software
 
